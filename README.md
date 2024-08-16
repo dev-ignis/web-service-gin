@@ -1,6 +1,6 @@
-# Go Gin Application
+# Go Gin Application with AWS S3 Integration
 
-This is a simple Go application that provides a RESTful API to manage a list of music albums. The application is built using the Gin web framework.
+This is a simple Go application that provides a RESTful API to manage a list of music albums. The application stores album data in AWS S3 as JSON files.
 
 ## Features
 - List all albums
@@ -8,12 +8,26 @@ This is a simple Go application that provides a RESTful API to manage a list of 
 - Add a new album
 
 ## Prerequisites
-- Go (for running the app outside of a container)
-- Docker (for running the app inside a container)
 
-## Running the Application
+- **Go**: For running the app outside of a container.
+- **Docker**: For running the app inside a container.
+- **AWS CLI**: To configure AWS credentials.
 
-### Running the Application Outside of a Container
+## AWS S3 Configuration
+
+Make sure you have an S3 bucket created where the album data will be stored. Update the `bucketName` variable in the code with your S3 bucket name.
+
+### AWS Credentials
+
+Ensure your AWS credentials are set up on your local machine or environment where the application runs:
+
+```bash
+aws configure
+```
+
+# Running the Application
+
+## Running the Application Outside of a Container
 
 1. **Clone the repository:**
 
@@ -22,19 +36,25 @@ This is a simple Go application that provides a RESTful API to manage a list of 
     cd go-gin-app
     ```
 
-2. **Build the application:**
+2. **Install dependencies:**
+
+    ```bash
+    go mod tidy
+    ```
+
+3. **Build the application:**
 
     ```bash
     go build -o main .
     ```
 
-3. **Run the application:**
+4. **Run the application:**
 
     ```bash
     ./main
     ```
 
-4. **Access the API:**
+5. **Access the API:**
 
    Open your browser or use `curl` to interact with the API:
 
@@ -42,7 +62,7 @@ This is a simple Go application that provides a RESTful API to manage a list of 
     curl http://localhost:8080/albums
     ```
 
-### Running the Application Inside a Docker Container
+## Running the Application Inside a Docker Container
 
 1. **Clone the repository:**
 
@@ -71,7 +91,7 @@ This is a simple Go application that provides a RESTful API to manage a list of 
     curl http://localhost:8080/albums
     ```
 
-### Accessing the API
+## Accessing the API
 
 Once the application is running (either inside or outside of Docker), you can access the following endpoints:
 
@@ -95,5 +115,15 @@ Once the application is running (either inside or outside of Docker), you can ac
 
 ### Notes
 
-- Make sure that the port `8080` is available on your host machine. If the port is in use, you can modify the port in the commands by replacing `8080` with an available port number.
-- If running in Docker, ensure that Docker is correctly configured and running on your system.
+- **AWS S3 Integration**: The application uses AWS S3 to store album data as JSON files. Ensure that your S3 bucket is properly configured, and your AWS credentials are correctly set up.
+- **Environment Variables**: You may need to configure environment variables or pass AWS credentials to the Docker container, depending on your setup.
+
+### Troubleshooting
+
+- **Connection Issues**: If you encounter issues when connecting to AWS S3, ensure that your credentials are correct and that you have network connectivity to AWS.
+- **Docker Networking**: If running in Docker, ensure that the Docker container has access to the network and that your AWS credentials are accessible within the container.
+
+### License
+
+This project is licensed under the MIT License.
+
