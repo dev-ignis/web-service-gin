@@ -5,9 +5,9 @@ import (
 	"log"
 	"os"
 
-	"example/web-service-gin/handlers"
-	"example/web-service-gin/utils"
 	"github.com/gin-gonic/gin"
+	"mht-web-service/handlers"
+	"mht-web-service/utils"
 )
 
 func main() {

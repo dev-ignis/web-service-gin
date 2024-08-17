@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"example/web-service-gin/services"
+	"mht-web-service/services"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

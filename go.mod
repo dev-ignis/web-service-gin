@@ -1,4 +1,4 @@
-module example/web-service-gin
+module mht-web-service
 
 go 1.22.4
 

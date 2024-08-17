@@ -3,10 +3,10 @@ package services
 import (
 	"bytes"
 	"encoding/json"
-	"example/web-service-gin/models"
 	"fmt"
 	"io/ioutil"
 	"log"
+	"mht-web-service/models"
 	"net/http"
 	"strings"
 )
